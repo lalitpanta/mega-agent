@@ -45,12 +45,14 @@ CONTACT: {business_info.get('contact', 'N/A')}
 ADDITIONAL INFO: {business_info.get('additional_info', 'N/A')}
 
 IMPORTANT RULES:
-1. Keep responses SHORT and CONCISE (1-3 sentences max)
-2. Be sweet and friendly in tone
-3. Be logical and to the point
-4. Reference business details when relevant
-5. Use the business name "{business_info.get('business_name', 'N/A')}" when appropriate
-6. NO lengthy explanations - get straight to the point"""
+1. ALWAYS keep responses to 1-2 sentences maximum
+2. Be direct, logical, and helpful
+3. Avoid unnecessary words, emojis (except when truly helpful), or fluff
+4. Don't be overly cheerful or annoying - be professional but friendly
+5. Reference business details only when directly relevant
+6. Give quick, straight-to-the-point answers
+7. No repetition or explaining obvious things
+8. If the question is outside business scope, politely decline"""
         print("✅ Business context loaded!")
     except (FileNotFoundError, json.JSONDecodeError) as e:
         business_context = "You are a helpful AI assistant."
@@ -142,7 +144,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot Assistant</title>
+    <title>Mega AI Assistant</title>
     <style>
         * {
             margin: 0;
@@ -158,6 +160,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             align-items: center;
             justify-content: center;
             padding: 10px;
+            min-height: 100vh;
         }
         
         .container {
@@ -178,16 +181,20 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             padding: 20px;
             text-align: center;
             border-bottom: 3px solid #5568d3;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
         
         .header h1 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         
         .header p {
             font-size: 12px;
-            opacity: 0.9;
+            opacity: 0.95;
+            font-weight: 500;
         }
         
         .chat-messages {
@@ -222,22 +229,25 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         
         .message-content {
             max-width: 70%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 15px;
             word-wrap: break-word;
-            line-height: 1.4;
+            line-height: 1.5;
+            font-size: 14px;
         }
         
         .message.user .message-content {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-bottom-right-radius: 0;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
         }
         
         .message.assistant .message-content {
-            background: #e9ecef;
-            color: #333;
+            background: #f0f2f5;
+            color: #2c3e50;
             border-bottom-left-radius: 0;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
         }
         
         .typing-indicator {
@@ -295,11 +305,12 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             padding: 12px 20px;
             font-size: 14px;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
         
         input[type="text"]:focus {
             border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
         
         button {
@@ -354,15 +365,15 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 <body>
     <div class="container">
         <div class="header">
-            <h1>💬 AI Assistant</h1>
-            <p>Powered by Advanced AI</p>
+            <h1>� Mega AI Assistant</h1>
+            <p>Smart, Quick & Logical Responses</p>
         </div>
         
         <div class="chat-messages" id="chatMessages">
             <div class="empty-state">
-                <div>👋</div>
-                <h2>Start a Conversation</h2>
-                <p>Ask me anything about our business!</p>
+                <div>🤖</div>
+                <h2>Welcome to Mega AI</h2>
+                <p>Ask quick questions & get instant answers</p>
             </div>
         </div>
         
@@ -487,9 +498,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     await fetch('/clear', { method: 'POST' });
                     chatMessages.innerHTML = `
                         <div class="empty-state">
-                            <div>👋</div>
-                            <h2>Start a Conversation</h2>
-                            <p>Ask me anything about our business!</p>
+                            <div>🤖</div>
+                            <h2>Welcome to Mega AI</h2>
+                            <p>Ask quick questions & get instant answers</p>
                         </div>
                     `;
                 } catch (error) {
