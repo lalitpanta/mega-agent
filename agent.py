@@ -1,13 +1,23 @@
 
 import json
 import threading
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Get API key from environment variable
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
+if not OPENROUTER_API_KEY:
+    raise ValueError("❌ OPENROUTER_API_KEY not found in .env file!")
+
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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"
+    api_key=OPENROUTER_API_KEY
 )
 
 # Global variables for business info
