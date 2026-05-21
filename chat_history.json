@@ -62,5 +62,21 @@
   {
     "role": "assistant",
     "content": "Hello! How can I help you today?"
+  },
+  {
+    "role": "user",
+    "content": "hii"
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! Is there something I can assist you with regarding Mega Web Link or their services? I'm happy to provide any information I have about the company, its CEO Aakash Shrestha, or how they may be able to help with your needs. Please let me know if you have any specific questions."
+  },
+  {
+    "role": "user",
+    "content": "hlo"
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! Is there a particular reason you're reaching out to me about Mega Web Link today? I'd be happy to assist you with any questions or provide more information about the company and its services. Please feel free to let me know how I can help."
   }
 ]
